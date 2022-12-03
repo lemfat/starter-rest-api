@@ -5,19 +5,12 @@ const db = require('cyclic-dynamodb')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// #############################################################################
-// This configures static hosting for files in /public that have the extensions
-// listed in the array.
-// var options = {
-//   dotfiles: 'ignore',
-//   etag: false,
-//   extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
-//   index: ['index.html'],
-//   maxAge: '1m',
-//   redirect: false
-// }
-// app.use(express.static('public', options))
-// #############################################################################
+app.get("/hello", (req, res) => {
+  const data = {
+    message: 'Hello'
+  }
+  res.json(data).end()
+})
 
 // Create or Update an item
 app.post('/:col/:key', async (req, res) => {
